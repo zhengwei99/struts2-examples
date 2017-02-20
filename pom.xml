@@ -15,8 +15,33 @@
     <properties>
         <struts2.version>2.5.8</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <servlet-api.version>3.0.1</servlet-api.version>
+		<jstl.version>1.2</jstl.version>
+		<standard.version>1.1.2</standard.version>
     </properties>
 
+<dependencyManagement>
+<dependencies>
+<!-- j2ee web spec -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>${standard.version}</version>
+			</dependency>
+</dependencies>
+</dependencyManagement>
     <dependencies>
 
         <dependency>
@@ -30,6 +55,21 @@
             <artifactId>log4j-core</artifactId>
             <version>2.7</version>
         </dependency>
+        
+        <!-- j2ee web spec -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+			</dependency>
 
     </dependencies>
 
@@ -56,9 +96,6 @@
 
 </pluginManagement>
         <plugins>
-
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
