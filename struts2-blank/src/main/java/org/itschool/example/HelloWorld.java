@@ -31,7 +31,12 @@ import java.util.Set;
  */
 public class HelloWorld extends ExampleSupport {
 
-    public String execute() throws Exception {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public String execute() throws Exception {
         setMessage(getText(MESSAGE));
         System.out.println("HelloWord.execute() invoked.");
         return SUCCESS;
