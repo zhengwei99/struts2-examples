@@ -5,54 +5,30 @@
 
 
 <struts>
-    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<!--constant name="struts.enable.SlashesInActionNames" value="true" /-->
+	<!-- <global-allowed-methods>execute,input,back,cancel,browse,save,delete,list,index</global-allowed-methods>  -->
+	<!--<constant name="struts.mapper.alwaysSelectFullNamespace" value="true"></constant> -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<package name="example" namespace="/example" extends="default" strict-method-invocation="true">
+<!-- 		<global-allowed-methods>regex:.*</global-allowed-methods>  -->
+		<action name="HelloWorld" class="org.itschool.example.HelloWorld">
+			<result>/WEB-INF/jsp/example/HelloWorld.jsp</result>
+		</action>
+		
+		<action name="throwError"  method="throwError" class="org.itschool.example.HelloWorld">
+			<result>/WEB-INF/jsp/example/HelloWorld.jsp</result>
+		</action>
+		
+		<action name="*User" method="{1}" class="org.itschool.example.WildcardMethodAction">
+			<result>/WEB-INF/jsp/example/{1}User.jsp</result>
+			<allowed-methods>insert</allowed-methods>
+		</action>
+		
+		<action name="dynamicMethodInvocation" class="org.itschool.example.DynamicMethodInvocationAction">
+			<result>/WEB-INF/jsp/example/dynamicMethodInvocationResult.jsp</result>
+<!-- 			<allowed-methods>method1,method2</allowed-methods > -->
+		</action>
 
-    <!--<constant name="struts.mapper.alwaysSelectFullNamespace" value="true"></constant>-->
-    <package name="example" namespace="/example" extends="default" strict-method-invocation="true">
-        <global-allowed-methods>add,doSomething</global-allowed-methods>
-        <!--<global-allowed-methods>execute,input,back,cancel,browse,save,delete,list,index</global-allowed-methods>-->
-        <action name="HelloWorld" class="org.itschool.example.HelloWorld">
-            <result>/WEB-INF/jsp/example/HelloWorld.jsp</result>
-        </action>
-
-        <action name="Login_*" method="{1}" class="org.itschool.example.Login">
-            <result name="input">/WEB-INF/jsp/example/Login.jsp</result>
-            <!--<result type="redirectAction">Menu</result>-->
-        </action>
-
-        <!--<action name="*" class="example.ExampleSupport">-->
-            <!--<result>/WEB-INF/jsp/example/{1}.jsp</result>-->
-        <!--</action>-->
-        <!-- Add actions here -->
-        <action name="getData"  class="org.itschool.example.FormValidation">
-            <result name="ok">/WEB-INF/jsp/example/Login.jsp</result>
-            <result name="error">/WEB-INF/jsp/example/error.jsp</result>
-            <exception-mapping exception="java.lang.RuntimeException" result="error">
-            </exception-mapping>
-            <allowed-methods>getList</allowed-methods>
-        </action>
-
-
-        <!--<action name="addUser"  class="example.FormValidation" method="add">-->
-            <!--<result name="add">/WEB-INF/jsp/example/addUser.jsp</result>-->
-        <!--</action>-->
-        <!--<action name="listUser"  class="example.FormValidation" method="list">-->
-            <!--<result name="list">/WEB-INF/jsp/example/listUser.jsp</result>-->
-        <!--</action>-->
-        <!--<action name="updateUser"  class="example.FormValidation" method="update">-->
-        <!--<result name="update">/WEB-INF/jsp/example/updateUser.jsp</result>-->
-        <!--</action>-->
-        <!--<action name="deleteUser"  class="example.FormValidation" method="delete">-->
-            <!--<result name="delete">/WEB-INF/jsp/example/deleteUser.jsp</result>-->
-        <!--</action>-->
-        <action name="*User" class="org.itschool.example.FormValidation" method="{1}">
-            <result name="{1}">/WEB-INF/jsp/example/{1}User.jsp</result>
-            <!--<result name="add">/WEB-INF/jsp/example/addUser.jsp</result>-->
-        </action>
-        <!--<action name="updateUser"  class="example.FormValidation" method="update">-->
-            <!--<result name="update">/WEB-INF/jsp/example/updateUser.jsp</result>-->
-        <!--</action>-->
-
-    </package>
+	</package>
 
 </struts>

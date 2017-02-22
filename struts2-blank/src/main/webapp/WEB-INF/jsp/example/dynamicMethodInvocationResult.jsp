@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>Hello,struts2</title>
+    <title>dynamic-method</title>
 </head>
 
 <body>
