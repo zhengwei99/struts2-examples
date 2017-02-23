@@ -28,7 +28,7 @@
 			<result>/WEB-INF/jsp/example/dynamicMethodInvocationResult.jsp</result>
 <!-- 			<allowed-methods>method1,method2</allowed-methods > -->
 		</action>
-
+		
 	</package>
 
 </struts>
